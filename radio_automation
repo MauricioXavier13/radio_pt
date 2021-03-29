@@ -1,0 +1,18 @@
+###Automation to update the info in the media_player
+
+alias: Radio
+description: ''
+trigger:
+  - platform: state
+    entity_id: media_player.googlehome
+  - platform: state
+    entity_id:
+      - sensor.radio_artist
+      - sensor.radio_name
+      - sensor.radio_artist
+      - sensor.radio_album
+      - sensor.radio_album_cover
+condition: []
+action:
+  - service: script.set_info_media_player
+mode: single

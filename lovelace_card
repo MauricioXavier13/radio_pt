@@ -1,0 +1,488 @@
+#Just change the entity by your own
+
+
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        color_type: blank-card
+      - type: 'custom:button-card'
+        entity: media_player.googlehome
+        icon: 'mdi:music'
+        show_name: false
+        styles:
+          card:
+            - height: 36px
+            - background-color: var(--accent-color)
+        state:
+          - value: playing
+            styles:
+              card:
+                - animation: blink 5s infinite
+                - filter: opacity(100%)
+                - background-color: goldenrod
+      - type: 'custom:button-card'
+        show_name: true
+        name: "\U0001F4FB RADIO FM \U0001F4FB"
+        styles:
+          card:
+            - width: 200px
+            - font-weight: bold
+      - type: 'custom:button-card'
+        entity: media_player.googlehome
+        icon: 'mdi:music'
+        show_name: false
+        styles:
+          card:
+            - height: 36px
+            - background-color: var(--accent-color)
+        state:
+          - value: playing
+            styles:
+              card:
+                - animation: blink 5s infinite
+                - filter: opacity(100%)
+                - background-color: goldenrod
+      - type: 'custom:button-card'
+        color_type: blank-card
+  - type: 'custom:mini-media-player'
+    entity: media_player.googlehome
+    info: scroll
+    volume_stateless: false
+    group: false
+    name: Sala
+    icon: 'mdi:google-home'
+    source: icon
+    sound_mode: full
+    artwork: full-cover
+  - type: 'custom:button-card'
+    icon: 'mdi:eye'
+    show_name: true
+    show_icon: false
+    name: "Esconder Rádios \U0001F441"
+    entity: input_boolean.google_home_radios
+    styles:
+      card:
+        - height: 15px
+        - background-color: var(--accent-color)
+      icon:
+        - color: white
+    state:
+      - value: 'off'
+        styles:
+          card:
+            - filter: opacity(50%)
+        name: "Ver Rádios \U0001F441 "
+  - type: conditional
+    conditions:
+      - entity: input_boolean.google_home_radios
+        state: 'on'
+    card:
+      type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.radio_comercial_sala
+          styles:
+            entity_picture:
+              - width: 100%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 20%
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/Logo_Radio_Comercial.jpg
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://mcrscast1.mcr.iol.pt/comercial.mp3' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.vodafone_sala
+          styles:
+            entity_picture:
+              - width: 143%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 16%
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_vodafone_fm.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                 === 'http://195.23.102.207/vodafone' &&
+                 states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.m80_sala
+          styles:
+            entity_picture:
+              - width: 100%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 20%
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_m80.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://mcrscast.mcr.iol.pt/m80' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.rfm_sala
+          styles:
+            entity_picture:
+              - width: 73%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 17%
+              - color: black
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_rfm.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'https://20863.live.streamtheworld.com/RFM_SC' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.nova_era_sala
+          styles:
+            entity_picture:
+              - margin-top: 10px
+              - width: 125%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 17%
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_nova_era.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://centova.radios.pt:9478/stream/1/' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+  - type: conditional
+    conditions:
+      - entity: input_boolean.google_home_radios
+        state: 'on'
+    card:
+      type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.cidadefm_sala
+          styles:
+            entity_picture:
+              - width: 177%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 20%
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_cidade_fm.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://mcrscast.mcr.iol.pt/cidadefm' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.megahits_sala
+          styles:
+            entity_picture:
+              - width: 60%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 16%
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_megahits.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://21313.live.streamtheworld.com/MEGA_HITS.mp3' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.antena3_sala
+          styles:
+            entity_picture:
+              - width: 66%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 20%
+              - color: black
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_antena3.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://radiocast.rtp.pt/antena380a.mp3' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.antena1_sala
+          styles:
+            entity_picture:
+              - width: 55%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 17%
+              - color: black
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_antena1.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://radiocast.rtp.pt/antena180a.mp3' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+        - type: 'custom:button-card'
+          tap_action:
+            action: call-service
+            service: script.tsf_sala
+          styles:
+            entity_picture:
+              - margin-top: 10px
+              - width: 75%
+            card:
+              - '--mdc-ripple-color': black
+              - '--mdc-ripple-press-opacity': 0.7
+              - background-color: ivory
+              - border-radius: 3%
+              - padding: 17%
+              - color: black
+              - height: 70px
+          entity: media_player.googlehome
+          entity_picture: /local/radio_logo/logo_tsf.png
+          show_entity_picture: true
+          show_name: false
+          state:
+            - operator: template
+              value: >
+                [[[ return
+                states['media_player.googlehome'].attributes.media_content_id
+                === 'http://tsfdirecto.tsf.pt/tsfdirecto.mp3' &&
+                states['media_player.googlehome'].state === 'playing']]]
+              styles:
+                card:
+                  - box-shadow: 0px 0px 5px 5px var(--button-card-light-color)
+  - type: 'custom:text-divider-row'
+    text: "\U0001F3B6 No Ar \U0001F3B6"
+  - type: 'custom:fold-entity-row'
+    head:
+      type: section
+      label: Expandir informação
+    entities:
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: Comercial
+        entities:
+          - sensor.comercial_music
+          - sensor.comercial_artist
+          - sensor.comercial_album
+          - sensor.comercial_anim_name
+          - sensor.comercial_show_name
+          - sensor.comercial_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: Vodafone
+        entities:
+          - sensor.vodafone_music
+          - sensor.vodafone_artist
+          - sensor.vodafone_album
+          - sensor.vodafone_anim_name
+          - sensor.vodafone_show_name
+          - sensor.vodafone_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: M80
+        entities:
+          - sensor.m80_music
+          - sensor.m80_artist
+          - sensor.m80_album
+          - sensor.m80_anim_name
+          - sensor.m80_show_name
+          - sensor.m80_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: RFM
+        entities:
+          - sensor.rfm_music
+          - sensor.rfm_artist
+          - sensor.rfm_album
+          - sensor.rfm_anim_name
+          - sensor.rfm_show_name
+          - sensor.rfm_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: Nova Era
+        entities:
+          - sensor.nova_era_music
+          - sensor.nova_era_artist
+          - sensor.nova_era_album
+          - sensor.nova_era_anim_name
+          - sensor.nova_era_show_name
+          - sensor.nova_era_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: Cidade FM
+        entities:
+          - sensor.cidadefm_music
+          - sensor.cidadefm_artist
+          - sensor.cidadefm_album
+          - sensor.cidadefm_anim_name
+          - sensor.cidadefm_show_name
+          - sensor.cidadefm_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: Mega Hits
+        entities:
+          - sensor.megahits_music
+          - sensor.megahits_artist
+          - sensor.megahits_album
+          - sensor.megahits_anim_name
+          - sensor.megahits_show_name
+          - sensor.megahits_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: Antena 3
+        entities:
+          - sensor.antena_3_music
+          - sensor.antena_3_artist
+          - sensor.antena_3_album
+          - sensor.antena_3_anim_name
+          - sensor.antena_3_show_name
+          - sensor.antena_3_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: Antena 1
+        entities:
+          - sensor.antena_1_music
+          - sensor.antena_1_artist
+          - sensor.antena_1_album
+          - sensor.antena_1_anim_name
+          - sensor.antena_1_show_name
+          - sensor.antena_1_show_hours
+      - type: 'custom:fold-entity-row'
+        head:
+          type: section
+          label: TSF (sem informação)
+        entities:
+          - sensor.tsf_geral

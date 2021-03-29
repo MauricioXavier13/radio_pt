@@ -1,5 +1,10 @@
 ###Automation to update the info in the media_player
 
+#1. Create a new automation
+#2. Conver to yaml
+#3. Copy the code below
+#4. Change the entity_id: media_player.googlehome for your respective media player.
+
 alias: Radio
 description: ''
 trigger:

@@ -1,0 +1,24 @@
+sensor:
+################
+### Sensors  ###
+################
+
+#########WEEKDAY###################
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_utc'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+      
+  - platform: template
+    sensors:
+      day_of_the_week:
+        friendly_name: "Day of the week"
+        value_template: >
+          {{ ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][now().weekday()] }}  
+          

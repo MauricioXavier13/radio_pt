@@ -1,0 +1,61 @@
+sensor:
+###Antena 3###
+    
+  - platform: command_line
+    name: Antena 3 Music
+    command: "python3 /config/python_scripts/radio_details_antena_3.py TITULO"
+    
+  - platform: command_line
+    name: Antena 3 Artist
+    command: "python3 /config/python_scripts/radio_details_antena_3.py COMENT1"
+    
+  - platform: command_line
+    name: imagem
+    command: "python3 /config/python_scripts/radio_details_antena_3.py EPG IMAGE"
+    
+  - platform: command_line
+    name: resumo
+    command: "python3 /config/python_scripts/radio_details_antena_3.py EPG RESUMO"
+    
+  - platform: scrape
+    resource: https://media.rtp.pt/antena3/
+    name: Antena 3 Show Name
+    select: ".program-caption"
+    value_template: '{{ value.split(" ")[12]}} {{ value.split(" ")[13]}}'
+
+  - platform: scrape
+    resource: https://media.rtp.pt/antena3/
+    name: Antena 3 Rádio Name
+    select: "title"
+    value_template: '{{ value }}' 
+    
+  - platform: scrape
+    resource: https://media.rtp.pt/antena3/
+    name: Antena 3 Show Hours
+    select: ".program-caption"
+    value_template: '{{ value.split(" ")[0]}}'  
+    
+  - platform: scrape
+    resource: https://media.rtp.pt/antena3/
+    name: Antena 3 Anim Name
+    select: ".program-caption"
+    value_template: '{{ value.split(" ")[12]}} {{ value.split(" ")[13]}}'
+
+  - platform: template
+    sensors:
+      antena_3_album:
+        friendly_name: Antena 3 Album
+        value_template: >
+          Sem Informação 
+  
+  - platform: scrape
+    resource: https://media.rtp.pt/antena3/
+    name: Antena 3 Album Cover
+    select: ".img-responsive"
+    attribute: src
+    value_template: >
+      {% if is_state('sensor.antena_3_album_cover', '') %}
+        https://cdn-images.rtp.pt/common/img/channels/promos/player_A3.jpg
+      {% else %}
+        {{ value }}
+      {% endif %}

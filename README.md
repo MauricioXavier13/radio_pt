@@ -1,6 +1,9 @@
 # radio_pt
 Play your portuguese radio stations in your media players (google compatible)
 
+Credits to https://github.com/maxcalavera81/radios for the original idea!
+A big thank you to Pedro Miguel Fernandes for the contribution with the python scripts.
+
 # Main Card - Global View
 
 ![image](https://user-images.githubusercontent.com/74264882/112848896-7494ad80-90a0-11eb-8001-b91d588925b9.png)

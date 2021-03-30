@@ -17,7 +17,10 @@ trigger:
       - sensor.radio_artist
       - sensor.radio_album
       - sensor.radio_album_cover
-condition: []
+condition:
+  - condition: state
+    entity_id: sensor.sala_playing_radio
+    state: playing
 action:
   - service: script.set_info_media_player
 mode: single

@@ -20,7 +20,7 @@ trigger:
 condition:
   - condition: state
     entity_id: sensor.sala_playing_radio
-    state: playing
+    state: Playing
 action:
   - service: script.set_info_media_player
 mode: single

@@ -5,7 +5,7 @@ Credits to https://github.com/maxcalavera81/radios for the original idea!
 A big thank you to Pedro Miguel Fernandes (https://github.com/pmfernandes) for the contribution with the python scripts.
 
 
-#Step by Step installation
+# Step by Step installation
 
 1. Copy all the python scripts (.py) to your folder in HA;
 	- Don't forget to enable it in in your configuration.yaml file writing (python_script:);

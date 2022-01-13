@@ -11,10 +11,10 @@ Step by Step installation
 2. Confirm that you have the repository config/www/downloads/ or set another one in variable filename in all the python radio files,
 3. Download the logos folder. I'm using /local(www)/radio_logo/ path in my lovelace card.
 4. Download the icons (media player) folder. I'm using /local(www)/icon/ path in my lovelace card.
-5. Download de folder Radio with all the Scripts and Sensors. You can use it as a package configuration;
+5. Download de folder Radio with all the Scripts and Sensors. You can use it as a package configuration (https://www.home-assistant.io/docs/configuration/packages/);
 	- In this version, an independent folder was created for each media player. So you can copy a single folder or 2 or how many you just want.
 	- In each media folder:
-		- Change radio_stations-XXXX.yaml, sensors_radio_XXXX_playing.yaml, scripts_radio_set_info_media_player_XXXX.yaml and automation_radio_XXXX.yamlchange all the entity_id fields to your media players.
+		- In radio_stations-XXXX.yaml, sensors_radio_XXXX_playing.yaml, scripts_radio_set_info_media_player_XXXX.yaml and automation_radio_XXXX.yaml, change all the entity_id fields to your media players.
 6. Copy the lovelace_card code and enter in a manual card. Change your media_player entities and the respective service in each radio button (see lovelace_card for more detailed instructions);
 7. The automation will trigger everytime you handle with the media player. The media player is trying to override your data with the default one, and with this automation you also will override with the radio info.
 8. Enjoy! :)

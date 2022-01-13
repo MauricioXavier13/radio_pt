@@ -1,0 +1,171 @@
+sensor:
+
+  - platform: template
+    sensors:
+      sala_mini_playing_radio:
+        value_template: >
+          {% if is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast1.mcr.iol.pt/comercial.mp3') %}
+            Playing 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://195.23.102.207/vodafone') %}
+            Playing
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/m80') %}
+            Playing
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'https://20863.live.streamtheworld.com/RFM_SC') %}
+            Playing
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://centova.radios.pt:9478/stream/1/') %}
+            Playing
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/cidadefm') %}
+            Playing 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://21313.live.streamtheworld.com/MEGA_HITS.mp3') %}
+            Playing 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena380a.mp3') %}
+            Playing
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena180a.mp3') %}
+            Playing
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://tsfdirecto.tsf.pt/tsfdirecto.mp3') %}
+            Playing 
+          {% else %}
+            Not Playing
+          {% endif %}
+      
+      
+  - platform: template
+    sensors:
+      radio_mini_name:
+        value_template: >
+          {% if is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast1.mcr.iol.pt/comercial.mp3') %}
+            {{states('sensor.comercial_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://195.23.102.207/vodafone') %}
+            {{states('sensor.vodafone_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/m80') %}
+            {{states('sensor.m80_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'https://20863.live.streamtheworld.com/RFM_SC') %}
+            {{states('sensor.rfm_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://centova.radios.pt:9478/stream/1/') %}
+            {{states('sensor.nova_era_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/cidadefm') %}
+            {{states('sensor.cidadefm_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://21313.live.streamtheworld.com/MEGA_HITS.mp3') %}
+            {{states('sensor.megahits_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena380a.mp3') %}
+            {{states('sensor.antena3_radio_name')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena180a.mp3') %}
+            {{states('sensor.antena1_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://tsfdirecto.tsf.pt/tsfdirecto.mp3') %}
+            {{states('sensor.tsf_music')}} 
+          {% else %}
+            
+          {% endif %}
+
+  - platform: template
+    sensors:
+      radio_mini_music:
+        value_template: >
+          {% if is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast1.mcr.iol.pt/comercial.mp3') %}
+            {{states('sensor.comercial_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://195.23.102.207/vodafone') %}
+            {{states('sensor.vodafone_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/m80') %}
+            {{states('sensor.m80_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'https://20863.live.streamtheworld.com/RFM_SC') %}
+            {{states('sensor.rfm_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://centova.radios.pt:9478/stream/1/') %}
+           {{states('sensor.nova_era_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/cidadefm') %}
+            {{states('sensor.cidadefm_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://21313.live.streamtheworld.com/MEGA_HITS.mp3') %}
+            {{states('sensor.megahits_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena380a.mp3') %}
+            {{states('sensor.antena3_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena180a.mp3') %}
+            {{states('sensor.antena1_music')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://tsfdirecto.tsf.pt/tsfdirecto.mp3') %}
+            {{states('sensor.tsf_music')}} 
+          {% else %}
+            
+          {% endif %}
+
+  - platform: template
+    sensors:
+      radio_mini_artist:
+        value_template: >
+          {% if is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast1.mcr.iol.pt/comercial.mp3') %}
+            {{states('sensor.comercial_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://195.23.102.207/vodafone') %}
+            {{states('sensor.vodafone_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/m80') %}
+            {{states('sensor.m80_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'https://20863.live.streamtheworld.com/RFM_SC') %}
+            {{states('sensor.rfm_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://centova.radios.pt:9478/stream/1/') %}
+            {{states('sensor.nova_era_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/cidadefm') %}
+            {{states('sensor.cidadefm_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://21313.live.streamtheworld.com/MEGA_HITS.mp3') %}
+            {{states('sensor.megahits_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena380a.mp3') %}
+            {{states('sensor.antena3_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena180a.mp3') %}
+            {{states('sensor.antena1_artist')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://tsfdirecto.tsf.pt/tsfdirecto.mp3') %}
+            {{states('sensor.tsf_artist')}} 
+          {% else %}
+            
+          {% endif %}
+          
+  - platform: template
+    sensors:
+      radio_mini_album:
+        value_template: >
+          {% if is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast1.mcr.iol.pt/comercial.mp3') %}
+            {{states('sensor.comercial_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://195.23.102.207/vodafone') %}
+            {{states('sensor.vodafone_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/m80') %}
+            {{states('sensor.m80_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'https://20863.live.streamtheworld.com/RFM_SC') %}
+            {{states('sensor.rfm_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://centova.radios.pt:9478/stream/1/') %}
+            {{states('sensor.nova_era_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/cidadefm') %}
+            {{states('sensor.cidadefm_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://21313.live.streamtheworld.com/MEGA_HITS.mp3') %}
+            {{states('sensor.megahits_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena380a.mp3') %}
+            {{states('sensor.antena3_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena180a.mp3') %}
+            {{states('sensor.antena1_album')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://tsfdirecto.tsf.pt/tsfdirecto.mp3') %}
+            {{states('sensor.tsf_album')}} 
+          {% else %}
+            
+          {% endif %}
+
+  - platform: template
+    sensors:
+      radio_album_mini_cover:
+        value_template: >
+          {% if is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast1.mcr.iol.pt/comercial.mp3') %}
+            {{states('sensor.comercial_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://195.23.102.207/vodafone') %}
+            {{states('sensor.vodafone_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/m80') %}
+            {{states('sensor.m80_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'https://20863.live.streamtheworld.com/RFM_SC') %}
+            {{states('sensor.rfm_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://centova.radios.pt:9478/stream/1/') %}
+            {{states('sensor.nova_era_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://mcrscast.mcr.iol.pt/cidadefm') %}
+            {{states('sensor.cidadefm_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://21313.live.streamtheworld.com/MEGA_HITS.mp3') %}
+            {{states('sensor.megahits_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena380a.mp3') %}
+            {{states('sensor.antena3_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://radiocast.rtp.pt/antena180a.mp3') %}
+            {{states('sensor.antena1_album_cover')}} 
+          {% elif is_state_attr('media_player.google_home_mini', 'media_content_id', 'http://tsfdirecto.tsf.pt/tsfdirecto.mp3') %}
+            {{states('sensor.tsf_album_cover')}} 
+          {% else %}
+            
+          {% endif %}
+          

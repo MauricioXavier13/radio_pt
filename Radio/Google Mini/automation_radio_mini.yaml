@@ -1,0 +1,21 @@
+automation:
+
+  alias: Radio Mini
+  description: 'Change sensors in media player card'
+  trigger:
+  - platform: state
+    entity_id: media_player.google_home_mini
+  - platform: state
+    entity_id:
+        - sensor.radio_mini_artist
+        - sensor.radio_mini_name
+        - sensor.radio_mini_artist
+        - sensor.radio_mini_album
+        - sensor.radio_mini_album_cover
+  condition:
+    - condition: state
+      entity_id: sensor.sala_mini_playing_radio
+      state: Playing
+  action:
+    - service: script.set_info_media_player_mini
+  mode: restart

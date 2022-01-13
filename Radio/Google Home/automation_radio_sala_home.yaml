@@ -1,0 +1,21 @@
+automation:
+
+  alias: Radio Sala
+  description: 'Change sensors in media player card'
+  trigger:
+  - platform: state
+    entity_id: media_player.googlehome
+  - platform: state
+    entity_id:
+        - sensor.radio_artist
+        - sensor.radio_name
+        - sensor.radio_artist
+        - sensor.radio_album
+        - sensor.radio_album_cover
+  condition:
+    - condition: state
+      entity_id: sensor.sala_playing_radio
+      state: Playing
+  action:
+    - service: script.set_info_media_player_sala
+  mode: restart

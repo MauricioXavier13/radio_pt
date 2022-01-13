@@ -1,0 +1,21 @@
+automation:
+
+  alias: Radio Grupo Sala
+  description: 'Change sensors in media player card'
+  trigger:
+  - platform: state
+    entity_id: media_player.grupo_sala
+  - platform: state
+    entity_id:
+        - sensor.radio_grupo_artist
+        - sensor.radio_grupo_name
+        - sensor.radio_grupo_artist
+        - sensor.radio_grupo_album
+        - sensor.radio_grupo_album_cover
+  condition:
+    - condition: state
+      entity_id: sensor.sala_grupo_playing_radio
+      state: Playing
+  action:
+    - service: script.set_info_media_player_grupo
+  mode: restart

@@ -1,0 +1,16 @@
+script:
+###############################
+### Set Info in MediaPlayer ###
+###############################
+  set_info_media_player_quarto:
+    alias: Set Info Media Player Quarto
+    sequence:
+      - service: python_script.set_state
+        data_template:
+          entity_id: media_player.nest_hub
+          app_name: "{{ states('sensor.radio_quarto_name') }}"
+          media_title: "{{ states('sensor.radio_quarto_music') }}"
+          media_artist: "{{states('sensor.radio_quarto_artist') }}"
+          media_album_name: "{{ states('sensor.radio_quarto_album') }}"
+          entity_picture_local: "{{ states('sensor.radio_album_quarto_cover') }}"
+          entity_picture: "{{ states('sensor.radio_album_quarto_cover') }}"

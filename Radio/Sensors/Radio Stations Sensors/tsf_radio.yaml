@@ -1,0 +1,19 @@
+sensor:
+##TSF###      
+
+  - platform: template
+    sensors:
+      tsf_geral:
+        friendly_name: TSF Geral
+        value_template: "Sem Informação"
+        
+      tsf_album_cover:
+        friendly_name: TSF Album Cover
+        value_template: https://cdn.worldvectorlogo.com/logos/tsf.svg
+    
+#  - platform: scrape
+#   resource: https://www.tsf.pt/emdirecto.html
+#    name: TSF Album Cover
+#    select: "DB_ALBUM_IMAGE"
+#    value_template: >
+#      https://cdn.worldvectorlogo.com/logos/tsf.svg

@@ -1,0 +1,175 @@
+script:
+##################
+### Play Radio ###
+##################
+
+#######################
+### Rádio Comercial ###
+#######################
+          
+  radio_comercial_sala_mini:
+    alias: Rádio Comercial Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://mcrscast1.mcr.iol.pt/comercial.mp3
+          media_content_type: 'audio/mp4'
+
+###########
+### RFM ###
+###########
+
+  rfm_sala_mini:
+    alias: RFM Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: https://20863.live.streamtheworld.com/RFM_SC
+          media_content_type: 'audio/mp4'
+
+###########
+### M80 ###
+###########
+
+  m80_sala_mini:
+    alias: M80 Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://mcrscast.mcr.iol.pt/m80
+          media_content_type: 'audio/mp4'
+
+################
+### Vodafone ###
+################
+          
+  vodafone_sala_mini:
+    alias: Vodafone Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://195.23.102.207/vodafone
+          media_content_type: 'audio/mp4'
+          
+################
+### Nova Era ###
+################
+          
+  nova_era_sala_mini:
+    alias: Nova Era Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://centova.radios.pt:9478/stream/1/
+          media_content_type: 'audio/mp4'
+          
+################
+### Antena 3 ###
+################
+
+  antena3_sala_mini:
+    alias: Antena 3 Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://radiocast.rtp.pt/antena380a.mp3
+          media_content_type: 'audio/mp4'  
+          
+################
+### Antena 1 ###
+################
+
+  antena1_sala_mini:
+    alias: Antena 1 Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://radiocast.rtp.pt/antena180a.mp3
+          media_content_type: 'audio/mp4'     
+          
+#################
+### Cidade FM ###
+#################
+          
+  cidadefm_sala_mini:
+    alias: Cidade FM Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://mcrscast.mcr.iol.pt/cidadefm
+          media_content_type: 'audio/mp4'     
+          
+################
+### MegaHits ###
+################
+
+  megahits_sala_mini:
+    alias: MegaHits Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://21313.live.streamtheworld.com/MEGA_HITS.mp3
+          media_content_type: 'audio/mp4'     
+          
+###########
+### TSF ###
+###########
+          
+  tsf_sala_mini:
+    alias: TSF Sala Mini
+    sequence:
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.google_home_mini
+          volume_level: '0.20'
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.google_home_mini
+          media_content_id: http://tsfdirecto.tsf.pt/tsfdirecto.mp3
+          media_content_type: 'audio/mp4'     
+          

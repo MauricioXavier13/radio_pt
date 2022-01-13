@@ -1,0 +1,21 @@
+automation:
+
+  alias: Radio Quarto
+  description: 'Change sensors in media player card'
+  trigger:
+  - platform: state
+    entity_id: media_player.nest_hub
+  - platform: state
+    entity_id:
+        - sensor.radio_quarto_artist
+        - sensor.radio_quarto_name
+        - sensor.radio_quarto_artist
+        - sensor.radio_quarto_album
+        - sensor.radio_quarto_album_cover
+  condition:
+    - condition: state
+      entity_id: sensor.sala_quarto_playing_radio
+      state: Playing
+  action:
+    - service: script.set_info_media_player_quarto
+  mode: restart

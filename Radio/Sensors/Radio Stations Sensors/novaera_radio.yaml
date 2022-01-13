@@ -1,0 +1,112 @@
+sensor:
+###Rádio Nova Era###
+   
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/soap.php
+    name: Nova Era Artist
+    select: "#martist"
+    value_template: '{{ value }}'
+    
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/soap.php
+    name: Nova Era Music
+    select: "#mtitle"
+    value_template: '{{ value }}' 
+    
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/schedule/tuesday.php
+    name: Nova Era Show Hours Week
+    select: ".fonts2"
+    value_template: '{{ value.split(" ")[1]}} - {{ value.split(" ")[3]}}'   
+    
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/schedule/tuesday.php
+    name: Nova Era Anim Name Week
+    select: ".fonts"
+    value_template: '{{ value }}'
+    
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/schedule/saturday.php
+    name: Nova Era Show Hours Saturday
+    select: ".fonts2"
+    value_template: '{{ value.split(" ")[1]}} - {{ value.split(" ")[3]}}'
+    
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/schedule/saturday.php
+    name: Nova Era Anim Name Saturday
+    select: ".fonts"
+    value_template: '{{ value}}' 
+
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/schedule/sunday.php
+    name: Nova Era Show Hours Sunday
+    select: ".fonts2"
+    value_template: '{{ value.split(" ")[1]}} - {{ value.split(" ")[3]}}'
+    
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/schedule/sunday.php
+    name: Nova Era Anim Name Sunday
+    select: ".fonts"
+    value_template: '{{ value}}'
+
+  - platform: template
+    sensors:
+
+      nova_era_anim_name:
+        value_template: >
+          {% if is_state('sensor.day_of_the_week', 'Saturday') %}
+            {{ states('sensor.nova_era_anim_name_saturday') }}
+          {% elif is_state('sensor.day_of_the_week', 'Sunday') %} 
+            {{ states('sensor.nova_era_anim_name_sunday') }}
+          {% else %}
+            {{ states('sensor.nova_era_anim_name_week') }}
+          {% endif %}
+          
+      nova_era_show_name:
+        value_template: >
+          {% if is_state('sensor.day_of_the_week', 'Saturday') %}
+            {{ states('sensor.nova_era_anim_name_saturday') }}
+          {% elif is_state('sensor.day_of_the_week', 'Sunday') %} 
+            {{ states('sensor.nova_era_anim_name_sunday') }}
+          {% else %}
+            {{ states('sensor.nova_era_anim_name_week') }}
+          {% endif %}          
+
+      nova_era_show_hours:
+        value_template: >
+          {% if is_state('sensor.day_of_the_week', 'Saturday') %}
+            {{ states('sensor.nova_show_hours_saturday') }}
+          {% elif is_state('sensor.day_of_the_week', 'Sunday') %} 
+            {{ states('sensor.nova_show_hours_sunday') }}
+          {% else %}
+            {{ states('sensor.nova_era_show_hours_week') }}
+          {% endif %}
+          
+      nova_era_album:
+        value_template: >
+          Sem Informação       
+
+  - platform: scrape
+    resource: https://radionovaera.pt/ne-player/soap.php
+    name: Nova Era Album Cover
+    select: "title"
+    value_template: >
+      {% if is_state('sensor.nova_era_album_cover', '') %}
+        https://radionovaera.pt/ne-player/ne-default.png 
+      {% else %}
+        https://radionovaera.pt/ne-player/ne-default.png 
+      {% endif %}
+
+#  - platform: scrape
+#    resource: https://www.radionovaera.pt/
+#    name: Nova Era Album
+#    select: "DB_ALBUM"
+#    value_template: >
+#      https://radionovaera.pt/ne-player/ne-default.png
+      
+  - platform: scrape
+    resource: https://www.radionovaera.pt/programacao/
+    name: Nova Era Radio Name
+    select: ".top-info"
+    value_template: '{{ value }}'
+

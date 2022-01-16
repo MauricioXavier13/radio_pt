@@ -15,8 +15,11 @@ A big thank you to Pedro Miguel Fernandes (https://github.com/pmfernandes) for t
 HACS Custom-Cards:
 
 custom:button-card | https://github.com/custom-cards/button-card
+
 custom:swipe-card | https://github.com/bramkragten/swipe-card
+
 card-tools | https://github.com/thomasloven/lovelace-card-tools
+
 mini-media-player | https://github.com/kalkih/mini-media-player
 
 # Step by Step installation

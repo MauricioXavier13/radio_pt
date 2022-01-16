@@ -10,7 +10,7 @@ A big thank you to Pedro Miguel Fernandes (https://github.com/pmfernandes) for t
 
 --------------------------------------------------------------------------------------
 
-#Pre-requisites:
+# Pre-requisites:
 
 - HACS Custom-Cards:
 	- custom:button-card | https://github.com/custom-cards/button-card

@@ -17,6 +17,7 @@ A big thank you to Pedro Miguel Fernandes (https://github.com/pmfernandes) for t
 	- custom:swipe-card | https://github.com/bramkragten/swipe-card
 	- card-tools | https://github.com/thomasloven/lovelace-card-tools
 	- mini-media-player | https://github.com/kalkih/mini-media-player
+	- fold-entity.row | https://github.com/thomasloven/lovelace-fold-entity-row
 
 # Step by Step installation
 

@@ -24,9 +24,10 @@ A big thank you to Pedro Miguel Fernandes (https://github.com/pmfernandes) for t
 	- *In this version, an independent folder was created for each media player. So you can copy a single folder or 2 or how many you just want.*
 	- In each media folder:
 		- In radio_stations-XXXX.yaml, sensors_radio_XXXX_playing.yaml, scripts_radio_set_info_media_player_XXXX.yaml and automation_radio_XXXX.yaml, change all the entity_id fields to your media players.
-6. Copy the lovelace_card code and enter in a manual card. Change your media_player entities and the respective service in each radio button (see lovelace_card for more detailed instructions);
-7. The automation will trigger everytime you handle with the media player. The media player is trying to override your data with the default one, and with this automation you also will override with the radio info.
-8. Enjoy! :)
+6. Create one entity helper named *input_number.speaker_radio*. Minimum 1 and Max 100 will be enough! :) 
+7. Copy the lovelace_card code and enter in a manual card. Change your media_player entities and the respective service in each radio button (see lovelace_card for more detailed instructions);
+8. The automation will trigger everytime you handle with the media player. The media player is trying to override your data with the default one, and with this automation you also will override with the radio info.
+9. Enjoy! :)
 
 ## DISCLAIMER
 Some radios don't have all the info available;
